@@ -1,4 +1,4 @@
-//NOTE: THIS IS NOT A SUCCESSFUL SUBMISSION. BUT IT DEMONSTRATES THE BASIC IDEA.....
+//NOTE: THIS WORKS. TIME IS 3.83s.
 #include <stdlib.h>
 #include <iostream>
 #include <bits/stdc++.h>
