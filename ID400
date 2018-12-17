@@ -1,0 +1,38 @@
+#include <stdio.h> //TO AND FRO
+#include <iostream>
+#include <string>
+#include <bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+    while(1>0)
+    {
+        int c;
+        scanf("%d",&c);
+        if(c==0){break;}
+        string s;
+        cin>>s;
+        int l=s.length();
+        int i=0,ind=0;
+        while(i<l)
+        {
+            if(ind%2!=0)
+            {
+            	string s1=s.substr(i,c);
+                reverse(s1.begin(),s1.end());
+                s.replace(i,c,s1);
+            }
+            ind++;
+            i+=c;
+        }
+        for(int i=0;i<c;i++)
+        {
+        	for(int j=i;j<l;j+=c)
+        	{
+        		printf("%c",s[j]);
+        	}
+        }
+        printf("\n");
+    }
+}
