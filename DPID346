@@ -1,4 +1,4 @@
-//NOTE: THIS WORKS. TIME IS 3.83s.
+//NOTE:DYNAMIC PROGRAMMING THIS WORKS. TIME IS 3.83s.
 #include <stdlib.h>
 #include <iostream>
 #include <bits/stdc++.h>
