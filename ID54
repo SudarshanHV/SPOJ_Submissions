@@ -1,0 +1,93 @@
+//JULKA, Implementation in C++ using strings.
+#include <iostream>
+#include <stdlib.h>
+#include <stdio.h>
+#include <string>
+#include <algorithm>
+#include <bits/stdc++.h>
+using namespace std;
+int n[102];
+int diff[102];
+int ans[102];
+void Reverse(string x,int y[])
+{
+      short int l1;//Setting the string to int arrays
+      l1=x.length();
+      short int k2=101;
+      for(int j=l1-1;j>=0;j--)
+      {y[k2]=x[j]-'0';k2--;}
+
+}
+void setZero(int x[])
+{
+    for(int i=0;i<102;i++)
+    {
+        x[i]=0;
+    }
+}
+void Add(int x[],int y[])
+{
+    int carry=0;
+    for(int i=101;i>=0;i--)
+    {
+       ans[i]=(x[i]+y[i]+carry)%10;
+       carry=(x[i]+y[i]+carry)/10;
+    }
+}
+void Subtract(int x[], int y[])
+{
+    for(int i=101;i>=0;i--)
+    {
+      if(x[i]-y[i]>=0)
+      ans[i]=x[i]-y[i];
+      else
+      {
+          ans[i]=x[i]-y[i]+10;
+          x[i-1]--;
+      }
+    }
+}
+void Divide2(int x[])
+{
+    for(int i=101;i>=0;i--)
+    {
+        if(ans[i]%2==0)
+        ans[i]/=2;
+        else
+        {
+            ans[i+1]+=5;
+            ans[i]/=2;
+        }
+    }
+}
+int main()
+{
+    for(int i=1;i<=10;i++)
+    {
+       string n1, d1;
+       setZero(n);setZero(diff);setZero(ans);
+       cin>>n1;
+       cin>>d1;
+       Reverse(n1,n);
+       Reverse(d1,diff);
+
+       Add(n,diff);
+       Divide2(ans);
+       short int ind=0;
+       while(ans[ind]==0)
+        {ind++;}
+       for(int j=ind;j<102;j++)
+        {cout<<ans[j];}
+       cout<<endl;
+
+       setZero(ans);
+       Subtract(n,diff);
+       Divide2(ans);ind=0;
+       while(ans[ind]==0)
+        ind++;
+       for(int j=ind;j<102;j++)
+        cout<<ans[j];
+        cout<<endl;
+
+    }
+}
