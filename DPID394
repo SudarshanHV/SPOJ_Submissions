@@ -1,0 +1,46 @@
+//Dynamic programming, ALPHACODE.
+#include <iostream>
+#include <stdlib.h>
+#include <stdio.h>
+#include <string>
+#include <algorithm>
+#include <bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+    while(1)
+    {
+        string num;
+        cin>>num;
+        if(num[0]=='0')break;
+        int l1=num.length();
+        long ans=1,t1=1,t2=1,multi=1;
+        for(int i=1;i<l1;i++)
+        {
+            long temp=(num[i-1]-'0')*10+(num[i]-'0');
+            if(num[i]!='0')
+            {
+              if(temp>10&&temp<=26)
+              {
+                ans=t1+t2;
+                t1=t2;t2=ans;
+              }
+              else
+              {
+                ans=t2;
+                t1=t2;
+              }
+            }
+            else
+            {
+                multi*=t1;
+                ans=0;
+                t1=0;t2=1;
+            }
+        }
+        if(ans!=0)
+        multi*=ans;
+        cout<<multi<<endl;
+    }
+}
