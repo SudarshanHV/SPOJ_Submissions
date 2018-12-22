@@ -1,0 +1,32 @@
+//WILL IT EVER STOP
+#include <stdlib.h>
+#include <stdio.h>
+#include <bits/stdc++.h>
+#include <string>
+using namespace std;
+long long arr[51];
+void Initialize()
+{
+    arr[0]=0;
+    arr[1]=1;
+         for(int i=2;i<=50;i++)
+        {
+            arr[i]=arr[i-1]*2;
+        }
+}
+int main()
+{
+    Initialize();
+    long long n;
+    scanf("%lld",&n);
+    int ans=0,i=0;
+    while(i<51)
+    {
+        if(arr[i]==n){ans=1;break;}
+        i++;
+    }
+    if(ans==0)
+    printf("NIE\n");
+    else
+    printf("TAK\n");
+}
