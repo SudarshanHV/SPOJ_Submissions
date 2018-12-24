@@ -1,0 +1,58 @@
+//AGGRESSIVE COW. SEE TOPCODER TUTORIAL ON USING BINARY SEARCH. Also try analzing this code line by line and reason out.
+/*LOGIC:: Say, instead of the way how the problem is stated, we check for 1 to be answer, if it holds move on to 2
+and so on.But, if for a given x, the answer does not hod, then for all X>x also the answer does not hold. So,
+this sort of condition, enables us to use binary search.
+Now, we also have the 'c' cows coming to the picture. So, take a number between 1 and max limit in the problem.
+Check that for 2 cows, 3 cows so on till cow=c. If it holds, then go higher than that using binary search. Does not hold,
+then discard the upper half and go for lower half. In this way we reach the answer.*/
+
+
+#include <iostream>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string>
+#include <bits/stdc++.h>
+#include <algorithm>
+using namespace std;
+int n,c;
+int checkForMid(long x[],long y)
+{
+    int cows=1;
+    long temp=x[0];
+    for(int i=1;i<n;i++)
+    {
+        if(x[i]-temp>=y)
+        {
+            cows++;
+            temp=x[i];
+            if(cows==c)return 1;
+        }
+    }
+    return 0;
+}
+int main()
+{
+    int t;
+    scanf("%d",&t);
+    while(t--)
+    {
+       scanf("%d %d",&n,&c);
+       long arr[n];
+       for(int i=0;i<n;i++)
+       {
+           scanf("%ld",&arr[i]);
+       }
+       sort(arr,arr+n);
+       long ini=arr[0],fin=arr[n-1];long mid,ans=1;
+       while(ini<=fin)
+       {
+           mid=(ini+fin)/2;
+           int check= checkForMid(arr,mid);
+           if(check==0)
+           {fin=mid-1;}
+           else
+           {ans=mid;ini=mid+1;}
+       }
+       printf("%ld\n",ans);
+    }
+}
