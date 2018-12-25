@@ -1,0 +1,38 @@
+//STAMPS:: Watch out for some test cases Eg: 1 1\n1: answer =1;
+#include <iostream>
+#include <stdio.h>
+#include <bits/stdc++.h>
+#include <algorithm>
+using namespace std;
+
+int main()
+{
+    int t;
+    scanf("%d",&t);
+    for(int i=1;i<=t;i++)
+    {
+        int ans=0,test=0;
+        long sum=0;
+        int need=0,fr=0;
+        scanf("%d %d",&need,&fr);
+        int arr[fr];
+        for(int j=0;j<fr;j++)
+        {
+            scanf("%d",&arr[j]);
+        }
+        sort(arr,arr+fr);
+        for(int j=fr-1;j>=0;j--)
+        {
+            if(sum<need)
+            {
+                sum+=arr[j];
+                test++;
+                if(sum>=need){ans=1;break;}
+            }
+        }
+        
+        printf("Scenario #%d:\n",i);
+        if(ans==1) printf("%d\n\n",test);
+        else printf("impossible\n\n");
+    }
+}
