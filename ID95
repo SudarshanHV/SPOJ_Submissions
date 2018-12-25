@@ -1,0 +1,58 @@
+//STREET PARADE. TEST CASE: 5, 5 1 2 4 3... yes
+#include <iostream>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string>
+#include <bits/stdc++.h>
+#include <stack>
+using namespace std;
+
+int main()
+{
+   while(1)
+   {
+       int n;
+       scanf("%d",&n);
+       if(n==0){break;}
+       int arr[n];
+       for(int i=0;i<n;i++)
+       {
+           scanf("%d",&arr[i]);
+       }
+       int ans=1;
+       stack <int> s;int mini=1;
+       for(int i=0;i<n;i++)
+       {
+           if(arr[i]==mini)
+           {
+               mini++;
+           	
+           }
+           else if(!(s.empty())&&s.top()==mini)
+           {
+               s.pop();
+               mini++;
+               i--;
+           }
+           else
+           {
+               s.push(arr[i]);
+           }
+       }
+       while(s.empty()!=1)
+       {
+           if(s.top()==mini)
+           {
+              s.pop();mini++;
+           }
+           else
+           {
+               ans=0;break;
+           }
+       }
+       if(ans==0)
+       printf("no\n");
+       else
+       printf("yes\n");
+    }
+}
